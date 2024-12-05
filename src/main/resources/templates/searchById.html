@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm Kiếm Sách Theo ID</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        /* Đặt chiều rộng tối đa cho form và căn giữa */
+.container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.223);
+}
+
+/* Styling tiêu đề của form */
+.container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+/* Styling cho form-group */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Styling cho label */
+.form-group label {
+    font-weight: bold;
+    color: #555;
+}
+
+/* Styling cho input */
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin-top: 5px;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Styling cho nút bấm */
+.btn-primary {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Styling cho thông báo lỗi */
+.text-danger {
+    color: #e74c3c;
+    text-align: center;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Tìm Kiếm Sách Theo ID</h1>
+    <form th:action="@{/searchById}" method="get">
+        <div class="form-group">
+            <label for="idBook">Nhập ID Sách:</label>
+            <input type="number" id="idBook" name="idBook" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Tìm Kiếm</button>
+    </form>
+    <!-- Hiển thị thông báo nếu không tìm thấy sách -->
+    <div th:if="${notFound}">
+        <p class="text-danger">Không tìm thấy sách với ID đã nhập.</p>
+    </div>
+</div>
+</body>
+</html>

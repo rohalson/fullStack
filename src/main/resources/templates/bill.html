@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hóa Đơn Mua Sách</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<style>
+    /* Căn giữa container và form trên trang */
+    body, html {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f0f0f0; /* Màu nền trang */
+    }
+
+    /* Định dạng cho container chính */
+    .container {
+        max-width: 600px;
+        width: 100%;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Định dạng tiêu đề */
+    h1 {
+        text-align: center;
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    /* Định dạng cho các nhãn mạnh (strong) */
+    strong {
+        font-weight: bold;
+        color: #333;
+    }
+
+    /* Định dạng các đoạn văn chứa thông tin sách */
+    p {
+        font-size: 16px;
+        margin: 10px 0;
+        color: #555;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ddd; /* Đường ngăn cách giữa các trường */
+    }
+
+    /* Căn chỉnh các span hiển thị thông tin */
+    span {
+        color: #000;
+        font-weight: normal;
+    }
+
+    /* Định dạng cho tổng tiền */
+    .summoney {
+        font-size: 18px;
+        color: #d9534f;
+        font-weight: bold;
+        border-bottom: none; /* Không có đường ngăn cách sau tổng tiền */
+    }
+
+    /* Định dạng nút submit và nút mua sách khác */
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        border-radius: 5px;
+        margin-top: 20px;
+        cursor: pointer;
+    }
+
+    .btn-primary {
+        background-color: #0275d8;
+        color: #fff;
+        border: none;
+        text-decoration: none;
+    }
+
+    .btn-primary:hover {
+        background-color: #025aa5;
+    }
+
+    /* Định dạng khi nút Mua sách khác nằm ngoài form */
+    a.btn-primary {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+
+</style>
+<body>
+<div class="container">
+    <h1>Hóa Đơn Mua Sách</h1>
+    <form action="/submitOrder" method="post">
+        <p class="name"><strong>Tên sách:</strong>
+            <span th:text="${book.bookName}"></span>
+        </p>
+        <p class="person"><strong>Tác giả:</strong>
+            <span th:text="${book.author}"></span>
+        </p>
+        <p class="category"><strong>Thể loại:</strong>
+            <span th:text="${book.category}"></span>
+        </p>
+        <p class="buy"><strong>Số lượng mua:</strong>
+            <span th:text="${quantity}"></span>
+        </p>
+        <p class="money"><strong>Giá mỗi cuốn:</strong>
+            <span th:text="${book.price}"></span>
+        </p>
+        <p class="summoney"><strong>Tổng tiền:</strong>
+            <span th:text="${totalPrice}"></span> VND
+        </p>
+        <a th:href="@{/home}" class="btn btn-primary">Về trang chủ</a>
+    </form>
+</div>
+</body>
+
+</html>

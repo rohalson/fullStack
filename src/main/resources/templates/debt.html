@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Nhập Số Tiền Nợ</title>
+    <link rel="stylesheet" href="styles.css">
+<!--    <script>-->
+<!--        function checkDebtAmount(event) {-->
+<!--            event.preventDefault(); // Ngăn chặn hành động submit mặc định-->
+<!--            var debtAmount = parseFloat(document.getElementById('debtAmount').value);-->
+<!--            if (debtAmount > 20) {-->
+<!--                window.location.href = 'home.html';-->
+<!--            } else {-->
+<!--                window.location.href = 'sellBook.html';-->
+<!--            }-->
+<!--        }-->
+<!--    </script>-->
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+input[type="number"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 300px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Nhập Số Tiền Nợ</h2>
+    <form id="debtForm" th:action="@{/submit-debt}" method="post">
+        <label for="debtAmount">Số Tiền Nợ:</label>
+        <input type="number" id="debtAmount" name="debtAmount" min="0" step="0.01" required>
+        <button type="submit">Gửi</button>
+    </form>
+</div>
+</body>
+</html>

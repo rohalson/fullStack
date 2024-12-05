@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Sách Sách</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        /* Custom CSS */
+        body {
+            background-color: #f4f7f6;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            color: #343a40;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .table {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+        }
+
+        td {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #343a40;
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            margin-top: 50px;
+            padding: 20px;
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: #e9ecef;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            td, th {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Danh Sách Sách</h1>
+    <table class="table table-striped table-hover mt-5">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Tên Sách</th>
+            <th>Tác Giả</th>
+            <th>Thể Loại</th>
+            <th>Số Lượng</th>
+            <th>Giá</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Duyệt qua danh sách sách và hiển thị từng thuộc tính -->
+        <tr th:each="book : ${books}">
+            <td th:text="${book.idBook}"> vnd</td>
+            <td th:text="${book.bookName}"> vnd</td>
+            <td th:text="${book.author}"> vnd</td>
+            <td th:text="${book.category}"> vnd</td>
+            <td th:text="${book.quantity}"> vnd</td>
+            <td th:text="${book.price}"> vnd</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
